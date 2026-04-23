@@ -1,8 +1,8 @@
 // ============================================================
 // 🔑 Environment configuration
-// Replace the value with your actual Gemini API key
+// API keys are loaded from .env (never commit that file)
 // ============================================================
 
 export const ENV = {
-  GEMINI_API_KEY: "AIzaSyAZ8t-hh0yVqGa7jdrmhvbtZDckZzxo64o",
+  GEMINI_API_KEY: process.env.EXPO_PUBLIC_GEMINI_API_KEY ?? "",
 };

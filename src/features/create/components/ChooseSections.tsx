@@ -2,7 +2,14 @@ import { Colors } from "@/src/theme/colors";
 import { FontFamily, FontSize } from "@/src/theme/typography";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import type { SelectOption } from "../constants/create.constants";
 
 // ─── Section Label ────────────────────────────────────────────────────────────
@@ -414,3 +421,314 @@ const lengthStyles = StyleSheet.create({
 // ─── World Grid (same layout as GenreGrid) ────────────────────────────────────
 
 export const WorldGrid = GenreGrid;
+
+// ─── Fear Picker ───────────────────────────────────────────────────────────────
+
+interface FearPickerProps {
+  options: SelectOption[];
+  selected: string | null;
+  onSelect: (id: string | null) => void;
+}
+
+export function FearPicker({ options, selected, onSelect }: FearPickerProps) {
+  return (
+    <View style={fearStyles.wrap}>
+      {options.map((opt) => {
+        const isSelected = opt.id === selected;
+        return (
+          <Pressable
+            key={opt.id}
+            onPress={() => onSelect(isSelected ? null : opt.id)}
+            style={({ pressed }) => [
+              fearStyles.chip,
+              isSelected && fearStyles.chipSelected,
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            {isSelected ? (
+              <LinearGradient
+                colors={[Colors.accent.magicPurple, Colors.accent.brightBlue]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={fearStyles.chipGradient}
+              >
+                <Text style={fearStyles.chipEmoji}>{opt.emoji}</Text>
+                <Text
+                  style={[fearStyles.chipLabel, fearStyles.chipLabelSelected]}
+                >
+                  {opt.label}
+                </Text>
+              </LinearGradient>
+            ) : (
+              <View style={fearStyles.chipInner}>
+                <Text style={fearStyles.chipEmoji}>{opt.emoji}</Text>
+                <Text style={fearStyles.chipLabel}>{opt.label}</Text>
+              </View>
+            )}
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+const fearStyles = StyleSheet.create({
+  wrap: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  chip: {
+    borderRadius: 50,
+    shadowColor: "transparent",
+  },
+  chipSelected: {
+    shadowColor: Colors.accent.magicPurple,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  chipGradient: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: 50,
+  },
+  chipInner: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: 50,
+    backgroundColor: "#1A0840",
+    borderWidth: 1.5,
+    borderColor: Colors.border.subtle,
+  },
+  chipEmoji: { fontSize: 16 },
+  chipLabel: {
+    fontFamily: FontFamily.body,
+    fontSize: FontSize.sm,
+    color: Colors.text.secondary,
+  },
+  chipLabelSelected: {
+    color: Colors.text.primary,
+    fontFamily: FontFamily.bodyBold,
+  },
+});
+
+// ─── Inspired By Picker ──────────────────────────────────────────────────────
+
+interface InspiredByPickerProps {
+  options: SelectOption[];
+  selected: string | null;
+  onSelect: (id: string | null) => void;
+}
+
+export function InspiredByPicker({
+  options,
+  selected,
+  onSelect,
+}: InspiredByPickerProps) {
+  return (
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={inspiredStyles.row}
+    >
+      {options.map((opt) => {
+        const isSelected = opt.id === selected;
+        return (
+          <Pressable
+            key={opt.id}
+            onPress={() => onSelect(isSelected ? null : opt.id)}
+            style={({ pressed }) => [
+              inspiredStyles.cell,
+              isSelected && inspiredStyles.cellGlow,
+              pressed && { opacity: 0.85 },
+            ]}
+          >
+            <LinearGradient
+              colors={
+                isSelected
+                  ? [Colors.accent.magicPurple, Colors.accent.brightBlue]
+                  : ["transparent", "transparent"]
+              }
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={[inspiredStyles.glowRing, { padding: isSelected ? 2 : 0 }]}
+            >
+              <View
+                style={[
+                  inspiredStyles.cellInner,
+                  !isSelected && inspiredStyles.cellUnselected,
+                ]}
+              >
+                <View style={inspiredStyles.emojiBox}>
+                  <Text style={inspiredStyles.emoji}>{opt.emoji}</Text>
+                </View>
+                {isSelected && (
+                  <View style={inspiredStyles.checkBadge}>
+                    <Text style={inspiredStyles.checkText}>✓</Text>
+                  </View>
+                )}
+                <Text style={inspiredStyles.label}>{opt.label}</Text>
+              </View>
+            </LinearGradient>
+          </Pressable>
+        );
+      })}
+    </ScrollView>
+  );
+}
+
+const inspiredStyles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    gap: 8,
+    paddingBottom: 4,
+  },
+  cell: {
+    width: 90,
+    borderRadius: 16,
+  },
+  cellGlow: {
+    shadowColor: Colors.accent.magicPurple,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 12,
+  },
+  glowRing: {
+    borderRadius: 16,
+  },
+  cellInner: {
+    borderRadius: 14,
+    overflow: "hidden",
+    paddingBottom: 8,
+  },
+  cellUnselected: {
+    borderRadius: 16,
+    overflow: "hidden",
+    paddingBottom: 8,
+    backgroundColor: "#1A0840",
+    borderWidth: 1.5,
+    borderColor: Colors.border.subtle,
+  },
+  emojiBox: {
+    width: "100%",
+    height: 64,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255,255,255,0.04)",
+  },
+  emoji: { fontSize: 28 },
+  checkBadge: {
+    position: "absolute",
+    top: 6,
+    right: 6,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    backgroundColor: Colors.accent.magicPurple,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkText: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "700",
+  },
+  label: {
+    fontFamily: FontFamily.body,
+    fontSize: FontSize.xs,
+    color: Colors.text.primary,
+    textAlign: "center",
+    marginTop: 6,
+    paddingHorizontal: 4,
+  },
+});
+
+// ─── Age Picker ───────────────────────────────────────────────────────────────
+
+interface AgePickerProps {
+  ages: { age: number; label: string; emoji: string }[];
+  selected: number;
+  onSelect: (age: number) => void;
+}
+
+export function AgePicker({ ages, selected, onSelect }: AgePickerProps) {
+  return (
+    <View style={ageStyles.wrap}>
+      {ages.map((item) => {
+        const isSelected = item.age === selected;
+        return (
+          <Pressable
+            key={item.age}
+            onPress={() => onSelect(item.age)}
+            style={({ pressed }) => [
+              ageStyles.bubble,
+              isSelected && ageStyles.bubbleSelected,
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            {isSelected ? (
+              <LinearGradient
+                colors={[Colors.accent.magicPurple, Colors.accent.brightBlue]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={ageStyles.bubbleGradient}
+              >
+                <Text style={ageStyles.bubbleNumber}>{item.label}</Text>
+              </LinearGradient>
+            ) : (
+              <View style={ageStyles.bubbleInner}>
+                <Text style={ageStyles.bubbleNumber}>{item.label}</Text>
+              </View>
+            )}
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+const ageStyles = StyleSheet.create({
+  wrap: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  bubble: {
+    borderRadius: 50,
+  },
+  bubbleSelected: {
+    shadowColor: Colors.accent.magicPurple,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+  },
+  bubbleGradient: {
+    width: 46,
+    height: 46,
+    borderRadius: 23,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bubbleInner: {
+    width: 46,
+    height: 46,
+    borderRadius: 23,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#1A0840",
+    borderWidth: 1.5,
+    borderColor: Colors.border.subtle,
+  },
+  bubbleNumber: {
+    fontFamily: FontFamily.bodyBold,
+    fontSize: FontSize.base,
+    color: Colors.text.primary,
+  },
+});

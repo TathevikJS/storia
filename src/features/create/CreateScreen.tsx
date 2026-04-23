@@ -17,14 +17,22 @@ import {
 } from "react-native";
 import CharacterCard from "./components/CharacterCard";
 import {
+  AgePicker,
+  FearPicker,
   GenreGrid,
+  InspiredByPicker,
   MoodRow,
   SectionLabel,
   StoryLengthSteps,
   WorldGrid,
 } from "./components/ChooseSections";
 import {
+  AGE_GROUPS,
+  FEARS,
+  FEARS_LABEL,
   GENRES,
+  INSPIRATIONS,
+  INSPIRATIONS_PROMPTS,
   MOODS,
   STORY_LENGTHS,
   WORLDS,
@@ -41,18 +49,23 @@ export default function CreateScreen() {
   const [mood, setMood] = useState("happy");
   const [length, setLength] = useState("medium");
   const [world, setWorld] = useState("enchanted_forest");
+  const [fear, setFear] = useState<string | null>(null);
+  const [listenerAge, setListenerAge] = useState(5);
+  const [inspiredBy, setInspiredBy] = useState<string | null>(null);
 
   const { generate, isLoading, error } = useGenerateStory();
 
   const handleStartStory = async () => {
     const story = await generate({
-      characterName: "Noah",
-      characterDescription:
-        "A brave boy who loves adventures and helping friends.",
+      characterName: "Aria",
+      characterDescription: "A princess.",
       genre,
       mood,
       world,
       length,
+      fear: fear ? FEARS_LABEL[fear] : undefined,
+      listenerAge,
+      inspiredBy: inspiredBy ? INSPIRATIONS_PROMPTS[inspiredBy] : undefined,
     });
 
     if (story) {
@@ -108,8 +121,8 @@ export default function CreateScreen() {
           {/* Character card */}
           <View style={styles.characterCardWrapper}>
             <CharacterCard
-              name="Noah"
-              description="A brave boy who loves adventures and helping friends."
+              name="Aria"
+              description="A Princess."
               onEdit={() => {}}
             />
           </View>
@@ -146,6 +159,35 @@ export default function CreateScreen() {
               options={STORY_LENGTHS}
               selected={length}
               onSelect={setLength}
+            />
+          </View>
+
+          {/* 5. Listener Age */}
+          <View style={styles.sectionBlock}>
+            <SectionLabel emoji="🎂" title="5. How Old Is the Listener?" />
+            <AgePicker
+              ages={AGE_GROUPS}
+              selected={listenerAge}
+              onSelect={setListenerAge}
+            />
+          </View>
+
+          {/* 6. Fear (optional) */}
+          <View style={styles.sectionBlock}>
+            <SectionLabel
+              emoji="💛"
+              title="6. Any Fear to Overcome? (optional)"
+            />
+            <FearPicker options={FEARS} selected={fear} onSelect={setFear} />
+          </View>
+
+          {/* 7. Inspired By (optional) */}
+          <View style={styles.sectionBlock}>
+            <SectionLabel emoji="✨" title="7. Inspired By... (optional)" />
+            <InspiredByPicker
+              options={INSPIRATIONS}
+              selected={inspiredBy}
+              onSelect={setInspiredBy}
             />
           </View>
         </ScrollView>

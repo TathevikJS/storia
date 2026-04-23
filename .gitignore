@@ -12,3 +12,6 @@ build/
 *.lock
 *.tmp
 *.swp
+# Environment variables
+.env
+.env.local

@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D57BD3B38C3565F28A6B974 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB29B28D02028783F8F3501D /* ExpoModulesProvider.swift */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		507133C3AFB219E769609718 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 21E1AA0286C6B0DF7AD93DAB /* PrivacyInfo.xcprivacy */; };
-		A71FE4C98DC2A9F571E23A0A /* libPods-Storia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAD2880F1A465452833A0FE /* libPods-Storia.a */; };
+		745D6511023A03042A236878 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1880ACD8772C3872CF749780 /* PrivacyInfo.xcprivacy */; };
+		A6E6BC529B046D1AC9A38AB8 /* libPods-Storia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A0E495FF70EB0E3AB29B16 /* libPods-Storia.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		E44AD9F3875F8CEE03A463E8 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F369D69C3EB6262C0150E59 /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		125081A030F370C7C5E52AA0 /* Pods-Storia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storia.debug.xcconfig"; path = "Target Support Files/Pods-Storia/Pods-Storia.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Storia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Storia/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Storia/Info.plist; sourceTree = "<group>"; };
-		1CB09DF87B4FB27A50407003 /* Pods-Storia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storia.release.xcconfig"; path = "Target Support Files/Pods-Storia/Pods-Storia.release.xcconfig"; sourceTree = "<group>"; };
-		21E1AA0286C6B0DF7AD93DAB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Storia/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		4CAD2880F1A465452833A0FE /* libPods-Storia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Storia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1880ACD8772C3872CF749780 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Storia/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		2FA47168D1B156905B2CFFF8 /* Pods-Storia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storia.release.xcconfig"; path = "Target Support Files/Pods-Storia/Pods-Storia.release.xcconfig"; sourceTree = "<group>"; };
+		4F369D69C3EB6262C0150E59 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Storia/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		70A0E495FF70EB0E3AB29B16 /* libPods-Storia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Storia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = Storia/SplashScreen.storyboard; sourceTree = "<group>"; };
-		AB29B28D02028783F8F3501D /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Storia/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Storia/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* Storia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Storia-Bridging-Header.h"; path = "Storia/Storia-Bridging-Header.h"; sourceTree = "<group>"; };
-		F6B16736F666DA16838B68D9 /* Pods-Storia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storia.debug.xcconfig"; path = "Target Support Files/Pods-Storia/Pods-Storia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,13 +37,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A71FE4C98DC2A9F571E23A0A /* libPods-Storia.a in Frameworks */,
+				A6E6BC529B046D1AC9A38AB8 /* libPods-Storia.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13102542ED4A591F3F1154CE /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				193AC8370A3C68DDD55F35D5 /* Storia */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* Storia */ = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +61,15 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				21E1AA0286C6B0DF7AD93DAB /* PrivacyInfo.xcprivacy */,
+				1880ACD8772C3872CF749780 /* PrivacyInfo.xcprivacy */,
+			);
+			name = Storia;
+			sourceTree = "<group>";
+		};
+		193AC8370A3C68DDD55F35D5 /* Storia */ = {
+			isa = PBXGroup;
+			children = (
+				4F369D69C3EB6262C0150E59 /* ExpoModulesProvider.swift */,
 			);
 			name = Storia;
 			sourceTree = "<group>";
@@ -62,17 +78,19 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				4CAD2880F1A465452833A0FE /* libPods-Storia.a */,
+				70A0E495FF70EB0E3AB29B16 /* libPods-Storia.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		79550C69A9B68A3C4C19001C /* ExpoModulesProviders */ = {
+		32C0F511FB3BBD26309964F8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				83F6DBC299E9A952BEB37D75 /* Storia */,
+				125081A030F370C7C5E52AA0 /* Pods-Storia.debug.xcconfig */,
+				2FA47168D1B156905B2CFFF8 /* Pods-Storia.release.xcconfig */,
 			);
-			name = ExpoModulesProviders;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -89,8 +107,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				F192C27F2BB72C7B198835B0 /* Pods */,
-				79550C69A9B68A3C4C19001C /* ExpoModulesProviders */,
+				32C0F511FB3BBD26309964F8 /* Pods */,
+				13102542ED4A591F3F1154CE /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -105,14 +123,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		83F6DBC299E9A952BEB37D75 /* Storia */ = {
-			isa = PBXGroup;
-			children = (
-				AB29B28D02028783F8F3501D /* ExpoModulesProvider.swift */,
-			);
-			name = Storia;
-			sourceTree = "<group>";
-		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,16 +130,6 @@
 			);
 			name = Supporting;
 			path = Storia/Supporting;
-			sourceTree = "<group>";
-		};
-		F192C27F2BB72C7B198835B0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F6B16736F666DA16838B68D9 /* Pods-Storia.debug.xcconfig */,
-				1CB09DF87B4FB27A50407003 /* Pods-Storia.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Storia" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				2E1B7D703E15036BAB52EBB7 /* [Expo] Configure project */,
+				9F0BE86EC1085CAC44A921D2 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				9F5326F57416F4209807910E /* [CP] Embed Pods Frameworks */,
+				3136D32394D84C688F221FBB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				507133C3AFB219E769609718 /* PrivacyInfo.xcprivacy in Resources */,
+				745D6511023A03042A236878 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,29 +242,27 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2E1B7D703E15036BAB52EBB7 /* [Expo] Configure project */ = {
+		3136D32394D84C688F221FBB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"$(SRCROOT)/.xcode.env",
-				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/Storia/Storia.entitlements",
-				"$(SRCROOT)/Pods/Target Support Files/Pods-Storia/expo-configure-project.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Storia/Pods-Storia-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(SRCROOT)/Pods/Target Support Files/Pods-Storia/ExpoModulesProvider.swift",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-Storia/expo-configure-project.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Storia/Pods-Storia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -298,27 +296,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Storia/Pods-Storia-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F5326F57416F4209807910E /* [CP] Embed Pods Frameworks */ = {
+		9F0BE86EC1085CAC44A921D2 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Storia/Pods-Storia-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/Storia/Storia.entitlements",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-Storia/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-Storia/ExpoModulesProvider.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Storia/Pods-Storia-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-Storia/expo-configure-project.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -328,7 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				0D57BD3B38C3565F28A6B974 /* ExpoModulesProvider.swift in Sources */,
+				E44AD9F3875F8CEE03A463E8 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +337,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6B16736F666DA16838B68D9 /* Pods-Storia.debug.xcconfig */;
+			baseConfigurationReference = 125081A030F370C7C5E52AA0 /* Pods-Storia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -373,7 +373,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CB09DF87B4FB27A50407003 /* Pods-Storia.release.xcconfig */;
+			baseConfigurationReference = 2FA47168D1B156905B2CFFF8 /* Pods-Storia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

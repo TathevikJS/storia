@@ -12,15 +12,10 @@ export type WorldId =
   | "ancient_ruins";
 
 export const AGE_GROUPS: { age: number; label: string; emoji: string }[] = [
-  { age: 2, label: "2",  emoji: "👶" },
-  { age: 3, label: "3",  emoji: "👶" },
-  { age: 4, label: "4",  emoji: "🧒" },
-  { age: 5, label: "5",  emoji: "🧒" },
-  { age: 6, label: "6",  emoji: "👧" },
-  { age: 7, label: "7",  emoji: "👧" },
-  { age: 8, label: "8",  emoji: "🧑" },
-  { age: 9, label: "9",  emoji: "🧑" },
-  { age: 10, label: "10", emoji: "🧑" },
+  { age: 2,  label: "2+",  emoji: "👶" },
+  { age: 4,  label: "4+",  emoji: "🧒" },
+  { age: 6,  label: "6+",  emoji: "👧" },
+  { age: 9,  label: "9+",  emoji: "🧑" },
 ];
 
 export interface SelectOption {
@@ -34,24 +29,24 @@ export interface SelectOption {
 
 export const GENRES: SelectOption[] = [
   {
-    id: "fantasy",
-    label: "Fantasy",
+    id: "fairy_tale",
+    label: "Fairy Tale",
     image: require("@/assets/images/castle.png"),
   },
   {
-    id: "space",
-    label: "Space",
-    image: require("@/assets/images/card_adventure.png"),
-  },
-  {
-    id: "fairytale",
-    label: "Fairy Tale",
-    image: require("@/assets/images/card_stories.png"),
+    id: "fable",
+    label: "Fable",
+    image: require("@/assets/images/dragon.png"),
   },
   {
     id: "adventure",
     label: "Adventure",
-    image: require("@/assets/images/card_draw.png"),
+    image: require("@/assets/images/card_adventure.png"),
+  },
+  {
+    id: "bedtime",
+    label: "Bedtime",
+    image: require("@/assets/images/moon.png"),
   },
 ];
 

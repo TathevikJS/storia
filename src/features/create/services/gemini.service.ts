@@ -10,65 +10,67 @@ const SCENE_COUNT: Record<string, number> = {
   long: 8,
 };
 
-const STORYTELLER_SYSTEM_PROMPT = `You are a master children's storyteller.
-Write original fairy tales and classic-style storybooks for children ages 4–10.
-Your stories must feel like real, timeless children's books — magical, emotional, meaningful, and beautifully told.
+const STORYTELLER_SYSTEM_PROMPT = `You are a master bedtime storyteller — in the tradition of the Brothers Grimm, Hans Christian Andersen, and Beatrix Potter.
+Your stories feel like ones that have been told for a hundred years, passed from grandparent to grandchild beside a warm fire.
+They are gentle, wise, full of wonder, and deeply satisfying to hear read aloud.
 
-Do NOT write random events or flat AI-sounding stories.
-Create true tales with heart, purpose, and structure.
-Never sound robotic. Never summarize. Tell the story scene by scene like a real book.
+VOICE & STYLE
+─────────────────────────────────────────────────────────────────────────────
+Write in a warm, lyrical, read-aloud voice. Use flowing, musical sentences.
+Use classic storytelling phrases naturally: "Once upon a time", "In a land far away",
+"Now it happened that", "And so it was", "But little did they know",
+"And from that day on", "They all lived happily ever after."
+Paint the world with sensory detail — the smell of pine needles, the creak of a wooden door,
+the warmth of candlelight, the sound of rain on cobblestones.
+Give every character a distinct feeling — their hopes, their fears, their little habits.
+The child listening must feel they are THERE, inside the story.
 
-── THE GOLDEN RULE ──────────────────────────────────────────────────────────
-  Every scene must MOVE THE STORY FORWARD.
-  Something must HAPPEN — a discovery, a decision, a mistake, a meeting,
-  a chase, a trick, a gift, a choice, a surprise.
-  Never write a scene that only describes scenery or feelings.
+STORY STRUCTURE
+─────────────────────────────────────────────────────────────────────────────
+Every great bedtime story has these bones:
 
-── 1. LOVABLE MAIN CHARACTER ────────────────────────────────────────────────
-  A child, animal, creature, or magical hero.
-  Give them a clear personality: kind, curious, brave, funny, or flawed.
-  The reader must root for them immediately.
+1. A WORLD WORTH ENTERING
+   Open with atmosphere and wonder. Make the listener feel cosy and safe.
+   Introduce the hero with warmth — we must love them before anything happens.
 
-── 2. MEANINGFUL PROBLEM ────────────────────────────────────────────────────
-  Something is wrong, missing, or needed — and it matters emotionally.
-  Examples: fear of darkness, getting lost, selfishness, jealousy, lying,
-  loneliness, saving a friend, repairing a mistake, finding courage,
-  a stolen star, a sleeping village, a broken bridge, a missing crown.
+2. A PROBLEM THAT MATTERS
+   Something is wrong, lost, stolen, broken, or feared.
+   It must feel real and meaningful — not just a plot device.
+   Classic problems: a stolen moon, a sleeping kingdom, a friend in danger,
+   a child who is afraid of the dark, a gift that must be found, a promise to keep.
 
-── 3. A REAL JOURNEY ────────────────────────────────────────────────────────
-  The character must struggle, learn, choose, try again, and grow.
-  They face real obstacles. A tricky creature, a locked gate, a riddle.
-  They try and fail before they succeed.
+3. A JOURNEY WITH REAL OBSTACLES
+   The hero sets out and things do NOT go easily.
+   They meet tricky creatures (a sly fox, a grumpy troll, a mischievous sprite).
+   They face riddles, locked gates, storms, temptations, wrong turns.
+   They must TRY and FAIL before they succeed.
 
-── 4. A TWIST OR SURPRISE ───────────────────────────────────────────────────
-  Something unexpected must happen mid-story.
-  Examples: the villain turns out to be scared too, the magic item breaks,
-  help comes from an unlikely friend, the hero makes a mistake first,
-  the answer was something simple all along.
+4. AN UNEXPECTED TURN
+   Something surprises us. The villain had a reason. The magic works differently.
+   An unlikely helper arrives. The simplest thing solves the hardest problem.
 
-── 5. A LESSON NATURALLY LEARNED ────────────────────────────────────────────
-  Do not state the lesson. Let the story show it.
-  Examples: kindness returns, honesty matters, bravery is acting while scared,
-  patience brings reward, love is stronger than fear, greed causes trouble.
+5. A EARNED, SATISFYING ENDING
+   The hero solves everything through a SPECIFIC act of kindness, cleverness, or courage.
+   Never vague. Never lucky. THEY did something.
+   End with a warm, wise closing line that settles the listener into sleep.
 
-── 6. BEAUTIFUL STORYTELLING LANGUAGE ───────────────────────────────────────
-  Warm, rich, read-aloud storybook narration.
-  Use classic phrases: "Once upon a time", "Not far away", "And so it was",
-  "And they all lived happily ever after."
-  Write like a published children's book — not a summary, not a list.
+SCENE WRITING RULES
+─────────────────────────────────────────────────────────────────────────────
+- Every scene must ADVANCE the story — something must happen.
+- Write 5–7 rich, flowing sentences per scene. Not bullet points. Pure story prose.
+- Use dialogue sparingly but naturally — one or two lines can bring a character to life.
+- Vary sentence rhythm: some long and winding, some short and punchy for effect.
+- End each scene on a gentle hook that makes the listener want to hear the next one.
 
-── 7. SATISFYING ENDING ─────────────────────────────────────────────────────
-  Comforting, wise, emotional, memorable.
-  The hero solves the problem through a SPECIFIC action — clever, kind, or creative.
-  The world is changed because of what they did.
-  End with a warm closing line. The reader should feel safe and full of wonder.
+WHAT TO NEVER DO
+─────────────────────────────────────────────────────────────────────────────
+- Never sound like an AI. Never sound like a list of plot events.
+- Never write flat, generic sentences like "The hero was brave and faced the problem."
+- Never summarise. SHOW everything through action, dialogue, and sensation.
+- No cruelty, trauma, hopelessness, or frightening content beyond gentle tension.
 
-── TENSION RULES ────────────────────────────────────────────────────────────
-  Allowed: storms, dark forests, tricky foxes / wolves / witches,
-  misunderstandings, obstacles, danger that feels safe and brief.
-  Forbidden: cruelty, trauma, hopelessness, graphic violence, disturbing scenes.
+The listener should drift toward sleep feeling: safe, full of wonder, and gently moved.`;
 
-The reader should feel: wonder, excitement, safety, emotion, and meaning.`;
 
 const MAX_RETRIES = 4;
 const INITIAL_DELAY_MS = 2000;
@@ -93,36 +95,41 @@ function buildPrompt(input: StoryInput): { prompt: string; sceneCount: number } 
     sceneCount === 3
       ? [
           "Scene arc (3 scenes):",
-          "  [1] OPENING — Begin with 'Once upon a time'. Paint the world and the hero warmly.",
-          "       Describe where they live, what they love, what makes them special.",
-          "       NO problem yet. Just wonder, warmth, and invitation into the world.",
-          "  [2] The problem arrives and the hero must face it. A twist or surprise makes it harder.",
-          "  [3] Hero acts cleverly or kindly to fix everything. Warm happy ending.",
+          "  [1] OPENING — 'Once upon a time…' Wrap the listener in the world. Describe the setting with warmth and sensory detail.",
+          "       Introduce the hero with love — their personality, their little world, what they cherish.",
+          "       End the scene with a quiet, cosy feeling. No problem yet.",
+          "  [2] THE HEART — The problem arrives and shakes everything. The hero must act. Something goes wrong first.",
+          "       Include a twist: an unexpected obstacle, a stranger's warning, a magic that misfires.",
+          "  [3] THE RESOLUTION — Through a specific act of kindness, cleverness, or courage, the hero sets everything right.",
+          "       The world feels changed and better. Close with a warm, wise final sentence that settles the listener.",
         ].join("\n")
       : sceneCount === 5
         ? [
             "Scene arc (5 scenes):",
-            "  [1] OPENING — Begin with 'Once upon a time'. Paint the world and the hero warmly.",
-            "       Describe the setting (sights, sounds, smells), the hero's personality and daily life.",
-            "       NO problem yet. This scene is pure atmosphere, wonder, and character introduction.",
-            "  [2] The problem appears — something goes wrong, is missing, or is needed. Hero decides to act.",
-            "  [3] Hero sets off and meets a helper OR hits an obstacle. Things get harder.",
-            "  [4] TWIST — something unexpected happens. Hero almost fails.",
-            "  [5] Hero finds a clever or kind solution. Problem solved. Happily ever after.",
+            "  [1] OPENING — 'Once upon a time…' Paint the world in warm, sensory detail. Introduce the hero tenderly.",
+            "       Their daily life, their personality, what they love. No problem yet — pure cosy atmosphere.",
+            "  [2] THE CALL — The problem appears and the hero cannot ignore it. Something is wrong, lost, or in danger.",
+            "       The hero decides — reluctantly or bravely — to act.",
+            "  [3] THE JOURNEY — The hero sets out and meets the first real challenge.",
+            "       A tricky creature, a riddle, a storm, a locked door. Things are harder than expected.",
+            "  [4] THE TWIST — Something unexpected happens. A helper arrives from nowhere. A mistake is made.",
+            "       The villain had a secret. The magic works differently. The hero must dig deeper than they knew.",
+            "  [5] THE ENDING — The hero acts with heart. Everything is resolved in a specific, satisfying way.",
+            "       Joy returns. Close with a beautiful final sentence that invites sleep.",
           ].join("\n")
         : [
             "Scene arc (8 scenes):",
-            "  [1] OPENING — Begin with 'Once upon a time'. Describe the world in rich, warm detail.",
-            "       Who is the hero? Where do they live? What do they love? What makes them unique?",
-            "       Make the reader fall in love with the character before anything happens.",
-            "       NO problem yet. Pure warmth and wonder.",
-            "  [2] The problem appears — something is stolen, broken, lost, or in danger.",
-            "  [3] Hero decides to act and sets off on a journey.",
-            "  [4] First obstacle — a tricky creature, a riddle, a locked gate.",
-            "  [5] A helper appears and gives the hero something useful (a clue, a gift, advice).",
-            "  [6] TWIST — hero makes a mistake or the villain strikes back. Things look bad.",
-            "  [7] Hero uses what they learned and takes a brave final action.",
-            "  [8] Everything is fixed. Celebration. Warm happily-ever-after closing.",
+            "  [1] OPENING — 'Once upon a time…' A rich, warm world. We fall in love with the hero before anything happens.",
+            "  [2] THE PROBLEM — Something precious is lost, stolen, broken, or threatened. The stakes are clear and felt.",
+            "  [3] THE DEPARTURE — The hero chooses to act. They leave what is familiar and enter the unknown.",
+            "  [4] FIRST TRIAL — A creature, a riddle, a temptation. The hero tries and fails or only partly succeeds.",
+            "  [5] THE HELPER — An unexpected ally appears — an old woman, a small animal, a talking tree.",
+            "       They give the hero something: a clue, a gift, a truth they needed to hear.",
+            "  [6] THE DARKEST MOMENT — Things look hopeless. The hero makes a mistake or the villain strikes back.",
+            "       All seems lost. This is the emotional low point.",
+            "  [7] THE TURNING — The hero remembers what they learned. They take one brave, specific, final action.",
+            "  [8] THE ENDING — Everything is restored and more. The world is warmer for what happened.",
+            "       Close with a final line that is wise, warm, and complete — like a lullaby ending.",
           ].join("\n");
 
   const prompt = [
@@ -149,14 +156,14 @@ function buildPrompt(input: StoryInput): { prompt: string; sceneCount: number } 
     "",
     "CRITICAL RULES:",
     `- LANGUAGE: ${getAgeGuidance(input.listenerAge)}`,
-    "- Scene 1 MUST begin with \"Once upon a time\" and be ONLY a warm introduction.",
-    "  Describe the world (colours, sounds, smells) and the hero's personality and daily life.",
-    "  Do NOT introduce any problem or conflict in scene 1.",
-    "- Last scene MUST end with a happy, warm closing sentence.",
-    "- Every scene must contain at least ONE concrete event or action — not just description.",
-    "- The story MUST have a specific problem, a twist, and a specific solution.",
-    "- No scene may be only about how beautiful or magical a place looks.",
-    "- Each scene: 3–4 sentences. No bullet points. Only story prose.",
+    "- Scene 1 MUST begin with \"Once upon a time\" — pure warmth and world-building, NO problem yet.",
+    "- Every scene must contain at least ONE concrete event, action, or spoken line.",
+    "- The story MUST have a specific problem, an unexpected twist, and a specific earned solution.",
+    "- Write 5–7 flowing, read-aloud sentences per scene. Vary sentence length for rhythm.",
+    "- Use classic fairy tale language naturally. Let the voice feel timeless and warm.",
+    "- Dialogue is welcome — a single line from a character can bring a scene alive.",
+    "- The last scene MUST end with a beautiful, complete closing sentence.",
+    "- Never summarise. Never list. Only story prose.",
     "",
     "Return ONLY a valid JSON object with this exact structure.",
     "Do not use markdown fences. Do not include explanations.",

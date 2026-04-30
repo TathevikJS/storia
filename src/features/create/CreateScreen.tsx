@@ -16,6 +16,7 @@ import {
   View,
 } from "react-native";
 import CharacterCard from "./components/CharacterCard";
+import HeroModal from "./components/HeroModal";
 import {
   AgePicker,
   FearPicker,
@@ -45,20 +46,26 @@ import StarIcon from "@/assets/svgs/star_icon.svg";
 export default function CreateScreen() {
   const router = useRouter();
 
-  const [genre, setGenre] = useState("fantasy");
+  const [characterName, setCharacterName] = useState("Aria");
+  const [characterDescription, setCharacterDescription] = useState(
+    "A brave princess who loves adventure.",
+  );
+  const [heroModalVisible, setHeroModalVisible] = useState(false);
+
+  const [genre, setGenre] = useState("fairy_tale");
   const [mood, setMood] = useState("happy");
   const [length, setLength] = useState("medium");
   const [world, setWorld] = useState("enchanted_forest");
   const [fear, setFear] = useState<string | null>(null);
-  const [listenerAge, setListenerAge] = useState(5);
+  const [listenerAge, setListenerAge] = useState(4);
   const [inspiredBy, setInspiredBy] = useState<string | null>(null);
 
   const { generate, isLoading, error } = useGenerateStory();
 
   const handleStartStory = async () => {
     const story = await generate({
-      characterName: "Aria",
-      characterDescription: "A princess.",
+      characterName,
+      characterDescription,
       genre,
       mood,
       world,
@@ -84,7 +91,7 @@ export default function CreateScreen() {
 
   return (
     <ImageBackground
-      source={require("@/assets/images/create_bg.png")}
+      source={require("@/assets/images/create_bg1.png")}
       style={[styles.root]}
       resizeMode="cover"
     >
@@ -121,9 +128,9 @@ export default function CreateScreen() {
           {/* Character card */}
           <View style={styles.characterCardWrapper}>
             <CharacterCard
-              name="Aria"
-              description="A Princess."
-              onEdit={() => {}}
+              name={characterName}
+              description={characterDescription}
+              onEdit={() => setHeroModalVisible(true)}
             />
           </View>
         </View>
@@ -190,10 +197,8 @@ export default function CreateScreen() {
               onSelect={setInspiredBy}
             />
           </View>
-        </ScrollView>
 
-        {/* ── SECTION 3 — Fixed footer ──────────────────────── */}
-        <View style={styles.footer}>
+          {/* ── Start Story Button ──────────────────────── */}
           <Pressable
             onPress={handleStartStory}
             disabled={isLoading}
@@ -217,7 +222,19 @@ export default function CreateScreen() {
               <Text style={styles.startBtnText}>START STORY</Text>
             )}
           </Pressable>
-        </View>
+        </ScrollView>
+        <HeroModal
+          visible={heroModalVisible}
+          initialName={characterName}
+          initialDescription={characterDescription}
+          onSave={(name, desc) => {
+            setCharacterName(name);
+            setCharacterDescription(desc);
+            setHeroModalVisible(false);
+          }}
+          onSkip={() => setHeroModalVisible(false)}
+          onClose={() => setHeroModalVisible(false)}
+        />
       </SafeAreaView>
     </ImageBackground>
   );
@@ -273,7 +290,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontFamily: FontFamily.headline,
-    fontSize: FontSize.lg,
+    fontSize: FontSize.xl,
     color: Colors.text.primary,
     letterSpacing: 1,
     textShadowColor: Colors.accent.magicPurple,
@@ -289,19 +306,14 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 16,
     paddingTop: 4,
-    paddingBottom: 16,
+    paddingBottom: 24,
     gap: 20,
   },
   sectionBlock: {
     gap: 0,
   },
 
-  // ── Footer ────────────────────────────────────────────────
-  footer: {
-    paddingHorizontal: 16,
-    paddingTop: 2,
-    paddingBottom: 2,
-  },
+  // ── Start Button ──────────────────────────────────────────
   startBtn: {
     alignItems: "center",
     justifyContent: "center",
@@ -311,7 +323,7 @@ const styles = StyleSheet.create({
     shadowRadius: 16,
   },
   startBtnImage: {
-    width: "70%",
+    width: "85%",
     height: 80,
   },
   startBtnText: {

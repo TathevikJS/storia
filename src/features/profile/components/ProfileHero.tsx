@@ -96,7 +96,7 @@ export default function ProfileHero({
         {/* Avatar with glow ring */}
         <View style={styles.avatarCol}>
           <LinearGradient
-            colors={[Colors.accent.magicPurple, Colors.accent.brightBlue]}
+            colors={["#C4B5FD", "#60A5FA", "#818CF8", "#7C3AED"]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.avatarRing}
@@ -244,10 +244,10 @@ const styles = StyleSheet.create({
     height: PROFILE_LAYOUT.avatarGlowSize,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: Colors.accent.magicPurple,
+    shadowColor: "#60A5FA",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
-    shadowRadius: 18,
+    shadowOpacity: 1,
+    shadowRadius: 15,
   },
   avatarRing: {
     width: PROFILE_LAYOUT.avatarGlowSize,

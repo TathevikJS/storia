@@ -51,13 +51,6 @@ export const PROFILE_MENU_ITEMS: ProfileMenuItemData[] = [
     description: "Complete offers and watch videos",
   },
   {
-    id: "coins_history",
-    icon: "⭐",
-    iconBgColor: "#FACC15",
-    label: "Star Coins History",
-    description: "See your earned and spent coins",
-  },
-  {
     id: "favorites",
     icon: "❤️",
     iconBgColor: "#EF4444",

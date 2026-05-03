@@ -2,6 +2,29 @@
 // 🎨 CREATE STORY — Static data constants
 // ============================================================
 
+export const CREATE_STRINGS = {
+  header: {
+    title: "CREATE YOUR STORY",
+    backArrow: "←",
+  },
+  button: {
+    startStory: "START STORY",
+  },
+  sections: {
+    world:       { emoji: "🌍", title: "1. Choose the World" },
+    genre:       { emoji: "✨", title: "2. Choose a Genre" },
+    mood:        { emoji: "😊", title: "3. Choose the Mood" },
+    storyLength: { emoji: "⏳", title: "4. Choose Story Length" },
+    listenerAge: { emoji: "🎂", title: "5. How Old Is the Listener?" },
+    fear:        { emoji: "💛", title: "6. Any Fear to Overcome? (optional)" },
+    inspiredBy:  { emoji: "✨", title: "7. Inspired By... (optional)" },
+  },
+  alerts: {
+    errorTitle:   "Oops!",
+    errorMessage: "Could not generate story. Please try again.",
+  },
+} as const;
+
 export type GenreId = "fantasy" | "space" | "fairytale" | "adventure";
 export type MoodId = "happy" | "scary" | "funny" | "magical";
 export type LengthId = "short" | "medium" | "long";

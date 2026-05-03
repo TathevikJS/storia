@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { BlurView } from "expo-blur";
 import { Colors } from "@/src/theme/colors";
 import { FontFamily, FontSize, LetterSpacing } from "@/src/theme/typography";
 import { Radius, Spacing } from "@/src/theme/spacing";
@@ -19,58 +20,76 @@ export default function StarCoinsCard({
 }: StarCoinsCardProps) {
   return (
     <LinearGradient
-      colors={[Colors.accent.magicPurple, Colors.accent.brightBlue]}
+      colors={[
+        "rgba(109,40,217,0.95)",
+        "rgba(29,78,216,0.85)",
+        "rgba(126,34,206,0.9)",
+      ]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.gradientBorder}
     >
-      <View style={styles.container}>
-        {/* Subtle gradient bg */}
+      <BlurView intensity={100} tint="dark" style={styles.blurContainer}>
+        {/* Top inner highlight — glass reflection */}
         <LinearGradient
-          colors={["#2D0B6B", "#1A0850"]}
+          colors={["rgba(255,255,255,0.18)", "rgba(255,255,255,0.0)"]}
           start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[StyleSheet.absoluteFill, { borderRadius: Radius.lg - 1 }]}
+          end={{ x: 0, y: 1 }}
+          style={styles.innerHighlight}
+          pointerEvents="none"
         />
-
-        {/* Treasure chest illustration */}
-        <View style={styles.chestCol}>
-          <Text style={styles.chestEmoji}>🪙</Text>
-          <Text style={styles.chestBigEmoji}>📦</Text>
-          <View style={styles.sparkleRow}>
-            <Text style={styles.sparkle}>✨</Text>
-            <Text style={styles.sparkle}>✨</Text>
+        <View style={styles.container}>
+          {/* Right side decorative background */}
+          <View style={styles.rightBgWrapper} pointerEvents="none">
+            <Image
+              source={require("@/assets/images/coins_section_right_bg.png")}
+              style={styles.rightBg}
+              resizeMode="contain"
+            />
           </View>
-        </View>
-
-        {/* Info */}
-        <View style={styles.infoCol}>
-          <Text style={styles.title}>STAR COINS</Text>
-          <View style={styles.coinsRow}>
-            <Text style={styles.coinIcon}>⭐</Text>
-            <Text style={styles.coinsValue}>{coins}</Text>
-            <Text style={styles.available}>Available</Text>
+          {/* Treasure chest illustration */}
+          <View style={styles.chestCol}>
+            <Image
+              source={require("@/assets/images/treasures4.png")}
+              style={styles.chestImage}
+              resizeMode="contain"
+            />
           </View>
-          <Text style={styles.description}>
-            Create stories and unlock{"\n"}amazing rewards!
-          </Text>
-        </View>
 
-        {/* CTA */}
-        <TouchableOpacity
-          style={styles.ctaBtn}
-          onPress={onGetFreeCoins}
-          activeOpacity={0.8}
-          accessibilityLabel="Get free star coins"
-        >
-          <LinearGradient
-            colors={["transparent", "transparent"]}
-            style={StyleSheet.absoluteFill}
-          />
-          <Text style={styles.ctaText}>GET FREE COINS </Text>
-          <Text style={styles.ctaStar}>⭐</Text>
-        </TouchableOpacity>
-      </View>
+          {/* Info */}
+          <View style={styles.infoCol}>
+            <Text style={styles.title}>STAR COINS</Text>
+            <View style={styles.coinsRow}>
+              <Text style={styles.coinIcon}>⭐</Text>
+              <Text style={styles.coinsValue}>{coins}</Text>
+            </View>
+            <Text style={styles.description}>
+              Unlock amazing rewards!
+            </Text>
+          </View>
+
+          {/* CTA */}
+          <TouchableOpacity
+            onPress={onGetFreeCoins}
+            activeOpacity={0.8}
+            accessibilityLabel="Get free star coins"
+            style={styles.ctaGlow}
+          >
+            {/* Outer glow border */}
+            <LinearGradient
+              colors={["#C4B5FD", "#60A5FA", "#818CF8", "#7C3AED"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.ctaBorderGradient}
+            >
+              {/* Dark pill interior */}
+              <View style={styles.ctaInner}>
+                <Text style={styles.ctaText}>GET FREE COINS</Text>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      </BlurView>
     </LinearGradient>
   );
 }
@@ -80,38 +99,59 @@ const styles = StyleSheet.create({
     marginHorizontal: Spacing[4],
     borderRadius: Radius.lg,
     padding: 1.5,
-    shadowColor: Colors.accent.brightBlue,
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.4,
-    shadowRadius: 20,
+    shadowColor: Colors.accent.magicPurple,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.55,
+    shadowRadius: 24,
     elevation: 12,
+  },
+  blurContainer: {
+    borderRadius: Radius.lg - 1,
+    overflow: "hidden",
+  },
+  innerHighlight: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "50%",
+    borderTopLeftRadius: Radius.lg - 1,
+    borderTopRightRadius: Radius.lg - 1,
+    zIndex: 1,
   },
   container: {
     borderRadius: Radius.lg - 1,
+    paddingRight: Spacing[4],
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: Spacing[3],
-    paddingHorizontal: Spacing[3],
     overflow: "hidden",
     gap: Spacing[2],
+    backgroundColor: "rgba(12, 3, 40, 0.85)",
+  },
+
+  // ── Right bg ───────────────────────────────────────────────
+  rightBgWrapper: {
+    position: "absolute",
+    right: -Spacing[3],
+    top: 0,
+    bottom: 0,
+    width: 120,
+    zIndex: 1,
+  },
+  rightBg: {
+    width: "100%",
+    height: "100%",
   },
 
   // ── Chest ─────────────────────────────────────────────────
   chestCol: {
     alignItems: "center",
     justifyContent: "center",
-    width: 64,
+    width: 110,
   },
-  chestBigEmoji: {
-    fontSize: 44,
-    marginTop: -8,
-  },
-  chestEmoji: {
-    fontSize: 18,
-    position: "absolute",
-    top: -4,
-    right: -2,
-    zIndex: 2,
+  chestImage: {
+    width: 140,
+    height: 90,
   },
   sparkleRow: {
     flexDirection: "row",
@@ -128,7 +168,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: FontFamily.headline,
-    fontSize: FontSize.base,
+    fontSize: FontSize.md,
     color: Colors.text.primary,
     letterSpacing: LetterSpacing.wider,
   },
@@ -138,11 +178,11 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   coinIcon: {
-    fontSize: FontSize.base,
+    fontSize: FontSize.sm,
   },
   coinsValue: {
     fontFamily: FontFamily.headline,
-    fontSize: FontSize.xl,
+    fontSize: FontSize.md,
     color: Colors.text.primary,
   },
   available: {
@@ -159,25 +199,36 @@ const styles = StyleSheet.create({
   },
 
   // ── CTA ───────────────────────────────────────────────────
-  ctaBtn: {
+  ctaGlow: {
+    shadowColor: "#60A5FA",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    elevation: 14,
+    borderRadius: 50,
+    zIndex: 1
+  },
+  ctaBorderGradient: {
+    borderRadius: 50,
+    padding: 2,
+  },
+  ctaInner: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: Spacing[2],
-    paddingHorizontal: Spacing[3],
-    borderRadius: Radius.button,
-    borderWidth: 2,
-    borderColor: Colors.accent.magicPurple,
-    gap: 4,
-    minWidth: 120,
+    backgroundColor: "rgba(4, 3, 28, 0.95)",
+    borderRadius: 48,
+    paddingVertical: Spacing[3],
+    paddingHorizontal: Spacing[4],
+    gap: 6,
   },
   ctaText: {
     fontFamily: FontFamily.button,
-    fontSize: FontSize.xs,
+    fontSize: FontSize.sm,
     color: Colors.text.primary,
-    letterSpacing: LetterSpacing.wide,
+    letterSpacing: LetterSpacing.wider,
   },
   ctaStar: {
-    fontSize: 13,
+    fontSize: 16,
   },
 });

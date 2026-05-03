@@ -57,7 +57,7 @@ export default function CharacterCard({
       {/* Avatar — bottom flush with card bottom, top overflows above card */}
       <View style={styles.avatarWrapper}>
         <LinearGradient
-          colors={[Colors.accent.magicPurple, Colors.accent.brightBlue]}
+          colors={["#C4B5FD", "#60A5FA", "#818CF8", "#7C3AED"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.avatarRing}
@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0, // avatar top = container top → overflows above the card
     left: 10,
-    shadowColor: Colors.accent.magicPurple,
+    shadowColor: "#60A5FA",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
-    shadowRadius: 18,
+    shadowOpacity: 1,
+    shadowRadius: 20,
     zIndex: 10,
   },
   avatarRing: {

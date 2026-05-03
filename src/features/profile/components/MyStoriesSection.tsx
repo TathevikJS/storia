@@ -13,6 +13,7 @@ import { FontFamily, FontSize } from "@/src/theme/typography";
 import { Radius, Spacing } from "@/src/theme/spacing";
 import { PROFILE_LAYOUT } from "../constants/profile.constants";
 import type { StoryCard } from "../types/profile.types";
+import SparkleIcon from "@/assets/svgs/sparkle_icon.svg";
 
 type MyStoriesSectionProps = {
   stories: StoryCard[];
@@ -36,7 +37,7 @@ export default function MyStoriesSection({
       <View style={styles.header}>
         <View style={styles.titleRow}>
           <Text style={styles.sectionTitle}>MY STORIES</Text>
-          <Text style={styles.titleEmoji}>⚡</Text>
+          <SparkleIcon width={20} height={20} />
         </View>
         <TouchableOpacity onPress={onSeeAll} style={styles.seeAllBtn}>
           <Text style={styles.seeAllText}>See all</Text>
@@ -70,13 +71,7 @@ export default function MyStoriesSection({
               />
               {/* Gradient overlay */}
               <View style={styles.storyOverlay} />
-
-              {/* Favourite star */}
-              {story.isFavorite && (
-                <View style={styles.favBadge}>
-                  <Text style={styles.favStar}>⭐</Text>
-                </View>
-              )}
+              
 
               {/* More dots */}
               <TouchableOpacity style={styles.moreDots}>
@@ -130,9 +125,6 @@ const styles = StyleSheet.create({
     fontSize: FontSize.lg,
     color: Colors.text.primary,
     letterSpacing: 1,
-  },
-  titleEmoji: {
-    fontSize: FontSize.lg,
   },
   seeAllBtn: {
     flexDirection: "row",

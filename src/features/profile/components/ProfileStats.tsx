@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { BlurView } from "expo-blur";
 import { Colors } from "@/src/theme/colors";
 import { FontFamily, FontSize } from "@/src/theme/typography";
 import { Radius, Spacing } from "@/src/theme/spacing";
@@ -66,41 +67,56 @@ export default function ProfileStats({
 
   return (
     <LinearGradient
-      colors={[Colors.accent.magicPurple, Colors.accent.brightBlue]}
+      colors={[
+        "rgba(109,40,217,0.95)",
+        "rgba(29,78,216,0.85)",
+        "rgba(126,34,206,0.9)",
+      ]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.gradientBorder}
     >
-      <View style={styles.container}>
-        {stats.map((stat, index) => (
-          <TouchableOpacity
-            key={stat.label}
-            style={[
-              styles.statCell,
-              index < stats.length - 1 && styles.statCellBorder,
-            ]}
-            activeOpacity={stat.onPress ? 0.7 : 1}
-            onPress={stat.onPress}
-            disabled={!stat.onPress}
-          >
-            {/* Gift badge overlay */}
-            {stat.label === "Daily Gifts" && dailyGiftsCount > 0 && (
-              <View style={styles.badge}>
-                <Text style={styles.badgeText}>{dailyGiftsCount}</Text>
+      <BlurView intensity={100} tint="dark" style={styles.blurContainer}>
+        {/* Top inner highlight — glass reflection */}
+        <LinearGradient
+          colors={["rgba(255,255,255,0.18)", "rgba(255,255,255,0.0)"]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.innerHighlight}
+          pointerEvents="none"
+        />
+
+        <View style={styles.container}>
+          {stats.map((stat, index) => (
+            <TouchableOpacity
+              key={stat.label}
+              style={[
+                styles.statCell,
+                index < stats.length - 1 && styles.statCellBorder,
+              ]}
+              activeOpacity={stat.onPress ? 0.7 : 1}
+              onPress={stat.onPress}
+              disabled={!stat.onPress}
+            >
+              {/* Gift badge overlay */}
+              {stat.label === "Daily Gifts" && dailyGiftsCount > 0 && (
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>{dailyGiftsCount}</Text>
+                </View>
+              )}
+
+              <Text style={styles.icon}>{stat.icon}</Text>
+
+              <View style={styles.valueRow}>
+                <Text style={styles.value}>{stat.value}</Text>
+                {stat.action}
               </View>
-            )}
 
-            <Text style={styles.icon}>{stat.icon}</Text>
-
-            <View style={styles.valueRow}>
-              <Text style={styles.value}>{stat.value}</Text>
-              {stat.action}
-            </View>
-
-            <Text style={styles.label}>{stat.label}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+              <Text style={styles.label}>{stat.label}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </BlurView>
     </LinearGradient>
   );
 }
@@ -112,14 +128,28 @@ const styles = StyleSheet.create({
     borderRadius: Radius.lg,
     padding: 1.5,
     shadowColor: Colors.accent.magicPurple,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.35,
-    shadowRadius: 16,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.55,
+    shadowRadius: 24,
+    elevation: 12,
+  },
+  blurContainer: {
+    borderRadius: Radius.lg - 1,
+    overflow: "hidden",
+  },
+  innerHighlight: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "50%",
+    borderTopLeftRadius: Radius.lg - 1,
+    borderTopRightRadius: Radius.lg - 1,
+    zIndex: 1,
   },
   container: {
     flexDirection: "row",
-    backgroundColor: "rgba(36, 10, 80, 0.90)",
+    backgroundColor: "rgba(12, 3, 40, 0.85)",
     borderRadius: Radius.lg - 1,
     paddingVertical: Spacing[3],
   },

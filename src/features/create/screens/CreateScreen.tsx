@@ -4,28 +4,29 @@ import React, { useState } from "react";
 import {
   Alert,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
+  View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import HeroModal from "./components/HeroModal";
-import CreateHeader from "./components/CreateHeader";
-import StartStoryButton from "./components/StartStoryButton";
-import WorldSection from "./components/sections/WorldSection";
-import GenreSection from "./components/sections/GenreSection";
-import MoodSection from "./components/sections/MoodSection";
-import StoryLengthSection from "./components/sections/StoryLengthSection";
-import ListenerAgeSection from "./components/sections/ListenerAgeSection";
-import FearSection from "./components/sections/FearSection";
-import InspiredBySection from "./components/sections/InspiredBySection";
+import HeroModal from "../components/HeroModal";
+import CreateHeader from "../components/CreateHeader";
+import StartStoryButton from "../components/StartStoryButton";
+import WorldSection from "../components/sections/WorldSection";
+import GenreSection from "../components/sections/GenreSection";
+import MoodSection from "../components/sections/MoodSection";
+import StoryLengthSection from "../components/sections/StoryLengthSection";
+import ListenerAgeSection from "../components/sections/ListenerAgeSection";
+import FearSection from "../components/sections/FearSection";
+import InspiredBySection from "../components/sections/InspiredBySection";
 
 import {
   FEARS_LABEL,
   INSPIRATIONS_PROMPTS,
   CREATE_STRINGS,
-} from "./constants/create.constants";
-import { useGenerateStory } from "./hooks/use-generate-story";
+} from "../constants/create.constants";
+import { useGenerateStory } from "../hooks/use-generate-story";
 
 export default function CreateScreen() {
   const router = useRouter();
@@ -76,6 +77,7 @@ export default function CreateScreen() {
   };
 
   return (
+    <View style={styles.root}>
       <SafeAreaView style={styles.safe}>
         {/* ── Fixed header ──────────────────────────────────── */}
         <CreateHeader
@@ -118,6 +120,7 @@ export default function CreateScreen() {
           onClose={() => setHeroModalVisible(false)}
         />
       </SafeAreaView>
+    </View>
   );
 }
 
